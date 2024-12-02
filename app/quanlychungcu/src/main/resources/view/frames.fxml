@@ -69,7 +69,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btndangkybaoduong" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openBaoDuong" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Đăng ký bảo dưỡng">
+            <Button fx:id="btndangkybaoduong" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openSuaChua" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Đăng ký sửa chữa">
                <graphic>
                   <FontAwesomeIconView glyphName="EDIT" size="15" />
                </graphic>
@@ -80,7 +80,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btndongphidichvu" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openBaoDuong" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Đóng phí dịch vụ">
+            <Button fx:id="btndongphidichvu" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openDongPhiDv" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Đóng phí dịch vụ">
                <graphic>
                   <FontAwesomeIconView glyphName="CREDIT_CARD" size="15" text="" />
                </graphic>
@@ -91,7 +91,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnphuongtien" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openBaoDuong" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Phương tiện">
+            <Button fx:id="btnphuongtien" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openPhuongTien" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Phương tiện">
                <graphic>
                   <FontAwesomeIconView glyphName="CAR" size="15" />
                </graphic>

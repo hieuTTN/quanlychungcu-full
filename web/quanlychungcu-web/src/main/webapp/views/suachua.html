@@ -1,0 +1,53 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <head>
+    <head th:replace="common/libuser :: libheader"></head>
+    <link rel="stylesheet" type="text/css" href="../css/stylemain.css">
+  </head>
+<body>
+<div class="d-flex" id="wrapper">
+  <div th:replace="common/navbar :: sidenav"></div>
+  <div id="page-content-wrapper" class="w-100">
+    <div th:replace="common/navbar :: topnav"></div>
+    <div class="container-fluid py-4" id='mainpageadmin'>
+      <div class="col-sm-12 header-sp">
+        <div class="row">
+          <div class="col-md-3">
+            <a href="add-sua-chua" class="btn btn-primary"><i class="fa fa-plus"></i> Yêu cầu sửa chữa</a>
+          </div>
+        </div>
+      </div>
+      <table class="table" id="example">
+        <thead>
+        <tr>
+          <th>Ngày yêu cầu sửa</th>
+          <th>Trạng thái sửa</th>
+          <th>Chi phí</th>
+          <th>Thanh toán</th>
+          <th>Nội dung yêu cầu</th>
+          <th>Chức năng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${listRes}">
+          <td th:text="${c.requestDate}"></td>
+          <td th:text="${c.fixed == false ? 'Chưa sửa':'Đã sửa xong'}"></td>
+          <td class="price" th:text="${c.fee}"></td>
+          <td th:text="${c.paid == true? 'Đã thanh toán':'Chưa thanh toán'}"></td>
+          <td th:utext="${c.description}"></td>
+          <td>
+            <a th:if="${c.fixed == false}" class="delete-btn" th:href="@{delete-sua-chua(id=${c.id})}" onclick="return confirm('Bạn có chắc chắn muốn xóa yêu cầu sửa chữa này?');"><i class="fa fa-trash iconaction" ></i></a>
+            <a th:if="${c.fixed == false}" class="edit-btn" th:href="@{add-sua-chua(id=${c.id})}"><i class="fa fa-edit iconaction" ></i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  $('#example').DataTable();
+</script>
+</html>

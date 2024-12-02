@@ -1,0 +1,47 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <head>
+    <head th:replace="common/libuser :: libheader"></head>
+    <link rel="stylesheet" type="text/css" href="../css/stylemain.css">
+  </head>
+<body>
+<div class="d-flex" id="wrapper">
+  <div th:replace="common/navbar :: sidenav"></div>
+  <div id="page-content-wrapper" class="w-100">
+    <div th:replace="common/navbar :: topnav"></div>
+    <div class="container-fluid py-4" id='mainpageadmin'>
+      <h5>Danh sách thông báo bảo trì thiết bị</h5>
+      <hr>
+      <table class="table" id="example">
+        <thead>
+        <tr>
+          <th>Tiêu đề</th>
+          <th>Ngày tạo</th>
+          <th>Ngày sửa chữa</th>
+          <th>Ngày dự kiến hoàn thành</th>
+          <th>Nội dung</th>
+          <th>Trạng thái</th>
+          <th>Người tạo</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="c : ${listRes}">
+            <td th:text="${c.title}"></td>
+            <td th:text="${c.createdDate}"></td>
+            <td th:text="${c.maintenanceTime}+ ', '+${c.maintenanceDate}"></td>
+            <td th:text="${c.expectedCompletionTime}+ ', '+${c.expectedCompletionDate}"></td>
+            <td class="content-placeholder" th:utext="${c.content}"></td>
+            <td th:text="${c.completed == true?'Đã sửa xong':'Chưa sửa xong'}"></td>
+            <td th:text="${c.createdBy == null?'':c.createdBy.fullName}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  $('#example').DataTable();
+</script>
+</html>

@@ -521,3 +521,8 @@
 .toast-success .toast-title {
     color: white !important;
 }
+.iconcheckbold{
+    font-weight: 800;
+    color: green;
+    font-size: 24px;
+}

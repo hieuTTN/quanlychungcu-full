@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.controller.vehicle.VehicleController">
+    <children>
+        <HBox alignment="CENTER_LEFT" minHeight="80.0" prefHeight="80.0" prefWidth="1000.0">
+            <children>
+                <Label fx:id="lbquanlyhodan" maxWidth="320.0" minWidth="500.0" prefHeight="30.0" prefWidth="500.0" text="Quản Lý Đăng Ký Phương Tiện">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Region prefHeight="76.0" prefWidth="2000.0" />
+            </children>
+        </HBox>
+        <TableView fx:id="table" prefHeight="2000.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="col_bienso" prefWidth="90.0" text="Biển số xe" />
+                <TableColumn fx:id="col_loaixe" prefWidth="176.0" text="Loại xe" />
+                <TableColumn fx:id="col_canho" prefWidth="129.0" text="Căn hộ" />
+                <TableColumn fx:id="col_chucnang" prefWidth="96.0" text="Chức năng" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

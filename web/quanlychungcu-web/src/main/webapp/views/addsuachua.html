@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <head>
+    <head th:replace="common/libuser :: libheader"></head>
+    <link rel="stylesheet" type="text/css" href="../css/stylemain.css">
+  </head>
+<body>
+<div class="d-flex" id="wrapper">
+  <div th:replace="common/navbar :: sidenav"></div>
+  <div id="page-content-wrapper" class="w-100">
+    <div th:replace="common/navbar :: topnav"></div>
+    <div class="container-fluid py-4" id='mainpageadmin'>
+      <form method="post" th:object="${repair}">
+        <div class="col-sm-7">
+          <label class="lb-form">Nội dung cần sửa chữa</label>
+          <textarea th:field="*{description}" id="editor" name="content"></textarea>
+          <br><br>
+          <button class="btn btn-primary form-control">Xác nhận</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.tiny.cloud/1/iu5zmzbokawdbnc7bsl2gynbnbnuzwi1p9tqzbm614zsa3ht/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector : 'textarea#editor',
+  });
+</script>
+</body>
+</html>

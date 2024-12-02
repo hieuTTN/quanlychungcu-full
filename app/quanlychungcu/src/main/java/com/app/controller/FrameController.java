@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 
 import com.app.controller.apartment.ApartmentController;
 import com.app.controller.maintenance.MaintenanceController;
+import com.app.controller.repair.RepairController;
 import com.app.controller.resident.ResidentController;
+import com.app.controller.vehicle.VehicleController;
 import com.app.repository.UserRepository;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
@@ -129,10 +131,42 @@ public class FrameController implements Initializable {
 
     }
 
+    @FXML
+    void openDongPhiDv(MouseEvent event) {
+
+    }
 
     @FXML
-    void openBaoDuong(MouseEvent event) {
+    void openSuaChua(MouseEvent event) throws IOException {
+        setNullId();
+        Button buttonClicked = (Button) event.getSource();
+        buttonClicked.setId("activemenu");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/repair/repair.fxml"));
+        loader.setControllerFactory(applicationContext::getBean);  // Dùng Spring để tạo controller
+        VBox node = loader.load();
+        noidung.getChildren().clear();
+        noidung.getChildren().add(node);
+        RepairController childController = loader.getController();
+        childController.setFrameController(this);
+        node.prefWidthProperty().bind(noidung.widthProperty());
+        node.prefHeightProperty().bind(noidung.heightProperty());
+    }
 
+
+    @FXML
+    void openPhuongTien(MouseEvent event) throws IOException {
+        setNullId();
+        Button buttonClicked = (Button) event.getSource();
+        buttonClicked.setId("activemenu");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/vehicle/vehicle.fxml"));
+        loader.setControllerFactory(applicationContext::getBean);  // Dùng Spring để tạo controller
+        VBox node = loader.load();
+        noidung.getChildren().clear();
+        noidung.getChildren().add(node);
+        VehicleController childController = loader.getController();
+        childController.setFrameController(this);
+        node.prefWidthProperty().bind(noidung.widthProperty());
+        node.prefHeightProperty().bind(noidung.heightProperty());
     }
 
 	@Override

@@ -11,7 +11,28 @@
   <div id="page-content-wrapper" class="w-100">
     <div th:replace="common/navbar :: topnav"></div>
     <div class="container-fluid py-4" id='mainpageadmin'>
-
+      <table class="table" id="example">
+        <thead>
+        <tr>
+          <th>Ảnh</th>
+          <th>Họ tên</th>
+          <th>Email</th>
+          <th>Ngày sinh</th>
+          <th>Số điện thoại</th>
+          <th>Số căn cước</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${listRes}">
+          <td><img th:src="${c.image}" class="imgtable"></td>
+          <td th:text="${c.fullName}"></td>
+          <td th:text="${c.email}"></td>
+          <td th:text="${c.bod}"></td>
+          <td th:text="${c.phone}"></td>
+          <td th:text="${c.cic}"></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

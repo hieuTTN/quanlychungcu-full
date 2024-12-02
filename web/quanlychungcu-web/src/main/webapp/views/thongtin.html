@@ -34,7 +34,7 @@
                         <th>Số phương tiện</th>
                         <td>
                             <i class="fa fa-car"></i> Ô tô: <span th:text="${xeOto}"></span> -
-                            <i class="fa fa-motorcycle"></i> Xe máy: <span th:text="${xeMay}"></span> - 
+                            <i class="fa fa-motorcycle"></i> Xe máy: <span th:text="${xeMay}"></span> -
                             <i class="fa fa-bicycle"></i> Xe đạp: <span th:text="${xeDap}"></span>
                         </td>
                     </tr>
@@ -58,6 +58,7 @@
                        <th>Ngày sinh</th>
                        <th>Số điện thoại</th>
                        <th>Số căn cước</th>
+                       <th>Chủ căn hộ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,6 +69,7 @@
                         <td th:text="${c.bod}"></td>
                         <td th:text="${c.phone}"></td>
                         <td th:text="${c.cic}"></td>
+                        <td><i th:if="${c.isHouseholdHead == true}" class="fa fa-check iconcheckbold"></i></td>
                     </tr>
                 </tbody>
             </table>
