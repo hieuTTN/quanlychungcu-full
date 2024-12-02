@@ -1,0 +1,42 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head>
+        <head th:replace="common/libuser :: libheader"></head>
+        <link rel="stylesheet" type="text/css" href="../css/stylemain.css">
+    </head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div th:replace="common/navbar :: sidenav"></div>
+    <div id="page-content-wrapper" class="w-100">
+        <div th:replace="common/navbar :: topnav"></div>
+        <div class="container-fluid py-4" id='mainpageadmin'>
+            <form method="post" th:object="${vehicle}" onsubmit="return checkBienSo()">
+                <div class="col-sm-4">
+                    <label class="lb-form">Loại xe</label>
+                    <select id="vehicleType" th:field="*{vehicleType}" name="vehicleType" class="form-control">
+                        <option value="2">Xe ô tô</option>
+                        <option value="1">Xe máy</option>
+                        <option value="0">Xe đạp</option>
+                    </select>
+                    <label class="lb-form">Biển số xe xe</label>
+                    <input id="licensePlate" th:field="*{licensePlate}" name="licensePlate" class="form-control" placeholder="30H 56789">
+                    <br><br>
+                    <button class="btn btn-primary form-control">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function checkBienSo(){
+        if((document.getElementById("vehicleType").value == 2 || document.getElementById("vehicleType").value == 1)
+            && document.getElementById("licensePlate").value == ""){
+            toastr.error("Xe máy và ô tô phải có biển số")
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

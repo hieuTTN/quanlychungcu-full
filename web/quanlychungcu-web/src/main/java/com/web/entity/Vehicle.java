@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "vehicle")
@@ -21,7 +22,9 @@ public class Vehicle {
     // 0-xe đạp, 1-xe máy, 2-ô tô
     private Integer vehicleType;
 
-    private Integer quantity;
+    private Date createdDate;
+
+    private Date updateDate;
 
     @ManyToOne
     private Apartment apartment;

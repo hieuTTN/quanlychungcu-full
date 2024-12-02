@@ -1,0 +1,19 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <head>
+    <head th:replace="common/libuser :: libheader"></head>
+    <link rel="stylesheet" type="text/css" href="../css/stylemain.css">
+  </head>
+<body>
+<div class="d-flex" id="wrapper">
+  <div th:replace="common/navbar :: sidenav"></div>
+  <div id="page-content-wrapper" class="w-100">
+    <div th:replace="common/navbar :: topnav"></div>
+    <div class="container-fluid py-4" id='mainpageadmin'>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

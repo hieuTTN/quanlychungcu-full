@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+</head>
+<body>
+<nav th:fragment="headerAdmin" id="top" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand ps-3" href="index">Quản trị hệ thống</a>
+  <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"></form>
+  <ul id="menuleft" class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+  </ul>
+</nav>
+
+<div th:fragment="sidenav">
+  <nav id="sidebar" class="bg-dark">
+    <div class="sidebar-header p-3 text-white">
+      <h3>Xin Chào <i class="fa fa-bars pointer" id="iconbaradmin" onClick={openClose}></i></h3>
+    </div>
+    <ul class="list-unstyled components">
+      <li>
+        <a href="/thongtin" class="text-white text-decoration-none">
+          <i class="fa fa-home"></i> Thông tin căn hộ
+        </a>
+      </li>
+      <li>
+        <a href="/thanhvien" class="text-white text-decoration-none">
+          <i class="fa fa-edit"></i> Đăng ký sửa chữa
+        </a>
+      </li>
+      <li>
+        <a href="/thanhvien" class="text-white text-decoration-none">
+          <i class="fa fa-cogs"></i> Thông báo bảo trì
+        </a>
+      </li>
+      <li>
+        <a href="/thanhvien" class="text-white text-decoration-none">
+          <i class="fa fa-car"></i> Phương tiện
+        </a>
+      </li>
+      <li>
+        <a href="/thanhvien" class="text-white text-decoration-none">
+          <i class="fa fa-dollar"></i> Đóng chi phí
+        </a>
+      </li>
+      <li>
+        <a href="/logout" class="text-white text-decoration-none">
+          <i class="fa fa-sign-out"></i> Đăng xuất
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <script th:inline="javascript">
+    var message = /*[[${message}]]*/ 'default';
+    if(message != null){
+      swal({
+                title: "Thông báo",
+                text: message,
+                type: "success"
+              },
+              function() {
+              });
+    }
+    var error = /*[[${error}]]*/ 'default';
+    if(error != null){
+        toastr.error(error);
+    }
+    var warning = /*[[${warning}]]*/ 'default';
+    if(warning != null){
+      toastr.warning(warning);
+    }
+  </script>
+</div>
+
+<div th:fragment="topnav">
+  <nav id='navbarmain' class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container-fluid">
+      <button class="btn btn-link" id="menu-toggle"><i class="fas fa-bars" onClick={openClose}></i></button>
+      <div class="dropdown ms-auto">
+        <a class="nav-link dropdown-toggle position-relative" href="#" role="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-bell"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              4
+          </span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+          <li className='lithongbao'>
+            <a class="dropdown-item thongbaonhanh" href="">Thông báo quản lý căn hộ
+              <span className='timethongbaonhanh'>15-12-2024</span>
+            </a>
+            <hr className='hrthongbao'/>
+          </li>
+          <div className='bottomthongbao'>
+            <li><a onClick={markNoti} class="dropdown-item" href="#"><i className='fa fa-check'></i> Đánh dấu tất cả là đã đọc</a></li>
+            <li><a class="dropdown-item" href="thong-bao"><i className='fa fa-eye'></i> Xem tất cả thông báo</a></li>
+          </div>
+        </ul>
+      </div>
+
+      <div class="dropdown ms-3">
+        <a class="dropdown-toggle d-flex align-items-center text-decoration-none" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="navbar-text me-2">Tài khoản</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="#">Thông tin căn hộ</a></li>
+          <li onClick={logout}><a class="dropdown-item" href="#">Đăng xuất</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script>
+    $( document ).ready(function() {
+      var pr = document.getElementsByClassName("price");
+      for(i=0; i<pr.length; i++){
+        pr[i].innerHTML = formatmoney(pr[i].innerText)
+      }
+    });
+    function formatmoney(money) {
+      const VND = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      });
+      return VND.format(money);
+    }
+  </script>
+</div>
+</body>
+</html>

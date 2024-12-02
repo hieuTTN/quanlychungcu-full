@@ -144,17 +144,14 @@
 
 .table {
     width: 100%; /* Bảng chiếm toàn bộ chiều rộng của khung chứa */
-    border-collapse: collapse; /* Xóa khoảng cách giữa các ô */
 }
 
 .table th, .table td {
     padding: 10px; /* Khoảng cách bên trong các ô */
-    border: 1px solid #ddd; /* Đường viền cho các ô */
     text-align: left; /* Canh trái nội dung trong ô */
 }
 .tablediv{
     margin-top: 15px;
-    border: 1px solid #e3e3e3;
     -webkit-box-shadow: 0 0 10px #d4d4d4;
     box-shadow: 0 0 10px #d4d4d4;
 }
@@ -486,4 +483,41 @@
 }
 #tabletinhbds{
     max-height: 350px !important;
+}
+.luuythongtin{
+    display: block;
+    margin-top: 20px;
+    background: #87312b;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+/* Tùy chỉnh toastr.error */
+.toast-error {
+    background-color: red !important;
+    color: white !important;
+}
+
+/* Tùy chỉnh toastr.warning */
+.toast-warning {
+    background-color: orange !important;
+    color: white !important;
+}
+
+/* Tùy chỉnh toastr.success */
+.toast-success {
+    background-color: green !important;
+    color: white !important;
+}
+
+/* Tùy chỉnh thêm nếu cần */
+.toast-message {
+    font-weight: bold;
+}
+
+/* Tùy chỉnh icon bên trái (nếu cần) */
+.toast-error .toast-title,
+.toast-warning .toast-title,
+.toast-success .toast-title {
+    color: white !important;
 }

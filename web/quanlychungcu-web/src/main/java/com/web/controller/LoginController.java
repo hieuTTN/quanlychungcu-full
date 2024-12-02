@@ -33,6 +33,7 @@ public class LoginController {
             return "redirect:/";
         }
         session.setAttribute("resident", resident.get());
+        session.setAttribute("residentName", resident.get().getFullName());
         return "redirect:/thongtin";
     }
 }
