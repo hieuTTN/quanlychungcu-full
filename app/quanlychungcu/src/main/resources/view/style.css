@@ -1,0 +1,248 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#add_content{
+	-fx-border-radius: 16.0px;
+	-fx-background-radius: 16.0px;
+	-fx-background-color: #fff;
+	-fx-cursor: hand;
+}
+
+.btn_menu{
+	-fx-background-color: rgba(211,227,253,0.5);
+	-fx-cursor: hand;
+    -fx-pref-height: 40;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.btn_menu:hover{
+	-fx-background-color: #eaebef;
+	-fx-border-radius: 0 20.0 20.0 0.0;
+  	-fx-background-radius: 0 20.0 20.0 0.0;
+}
+
+#activemenu{
+	-fx-background-color: #fff;
+	-fx-border-radius: 0 20.0 20.0 0.0;
+  	-fx-background-radius: 0 20.0 20.0 0.0;
+}
+
+#pane_search{
+	-fx-background-color: #fff;
+	-fx-border-radius: 10px;
+  	-fx-background-radius: 10px;
+  	-fx-effect: dropshadow(three-pass-box, #9e9d9b, 1, 10, 2, 3);
+}
+
+#txt_search{
+	-fx-background-color: none;
+}
+
+#sub_menu{
+	-fx-background-color: rgba(211,227,253,0.5);
+
+}
+
+.menu{
+	-fx-background-color: rgba(211,227,253,0.5);
+}
+
+.btn_submenu{
+	-fx-background-color: none;
+	-fx-cursor: hand;
+}
+
+.table-view{
+	-fx-background-color: transparent;
+	-fx-background-radius:30;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+.table-row-cell :hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: red;
+}
+.table-row-cell :odd{
+    -fx-background-color: #93f9b911;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-view .table-cell{
+    -fx-border-color: #ebebe0;
+    -fx-padding: 2 0 2 10px;
+}
+
+.table-row-cell :even{
+    -fx-background-color: #1dbbdd11;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+    -fx-background-radius: 5em;
+}
+
+.scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+.scroll-bar .increment-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+
+#footer{
+	-fx-background-color: rgba(211,227,253,0.5);
+}
+
+.popover{
+	-fx-background-color: #e5faee;
+}
+
+.text{
+	-fx-prompt-text-fill: #fff;
+	-fx-text-fill: #fff;
+	-fx-border-width:0 0 2 0;
+	-fx-border-color: #afb1b3;
+	-fx-background-color: none;
+	
+}
+
+.loginform{
+	 -fx-background-image: url("../../image/background.jpg");
+	 -fx-background-position: center;
+	 -fx-background-size: 100%;
+	 
+}
+
+.btn_login{
+	-fx-background-radius: 10px;
+}
+.btnadd{
+    -fx-cursor: hand;
+    -fx-background-color: #1dbbdd44
+}
+.inputadd{
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-text-fill: #333; /* Màu chữ */
+    -fx-background-color: #f9f9f9; /* Màu nền */
+    -fx-background-radius: 5; /* Bo góc */
+    -fx-border-color: #ccc; /* Màu viền */
+    -fx-border-width: 1; /* Độ dày viền */
+    -fx-border-radius: 5; /* Bo góc viền */
+    -fx-padding: 5 10 5 10; /* Khoảng cách bên trong */
+    -fx-pref-height: 35;
+}
+
+.inputadd:focused {
+    -fx-border-color: #0078d7; /* Màu viền khi được chọn */
+    -fx-background-color: #fff; /* Nền trắng khi được chọn */
+}
+
+.inputadd:hover {
+    -fx-border-color: #555; /* Màu viền khi hover */
+}
+.btn_add{
+    -fx-pref-height: 35;
+    -fx-background-color: #1dbbdd44; /* Gradient màu xanh lá */
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20; /* Khoảng cách trong button */
+    -fx-background-radius: 5; /* Bo góc nền */
+    -fx-border-radius: 5; /* Bo góc viền */
+    -fx-cursor: hand; /* Con trỏ dạng tay khi hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.2, 0, 2); /* Hiệu ứng bóng */
+    -fx-transition: all 0.3s ease-in-out; /* Animation chuyển đổi */
+}
+
+.btn_add:hover {
+    -fx-background-color: linear-gradient(to bottom, #66BB6A, #43A047); /* Màu khi hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.3, 0, 3); /* Bóng tăng khi hover */
+}
+.btn_add:pressed {
+    -fx-background-color: linear-gradient(to bottom, #2E7D32, #1B5E20); /* Màu khi nhấn */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 3, 0.1, 0, 1); /* Bóng giảm khi nhấn */
+    -fx-translate-y: 2; /* Nút nhấn xuống */
+}
+.editbtn{
+    -fx-background-color: #f39c12;
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-cursor: hand;
+}
+.editbtn:hover{
+    -fx-background-color: #f39c12;
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-cursor: hand;
+}
+.deletebtn{
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-cursor: hand;
+}
+.deletebtn:hover{
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-cursor: hand;
+}
