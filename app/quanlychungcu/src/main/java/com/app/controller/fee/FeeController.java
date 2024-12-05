@@ -206,7 +206,7 @@ public class FeeController implements Initializable {
             }
             if(fee.getUtilityBill().getPaidStatus() == false && fee.getUtilityBill().getFee() != null &&  fee.getUtilityBill().getFee() > 0){
                 if (conLai.length() > 0 ) conLai += " - ";
-                conLai += " Điện - nước";
+                conLai += " Điện nước";
             }
             return new SimpleStringProperty(conLai);
         });
@@ -253,6 +253,7 @@ public class FeeController implements Initializable {
 
         // Xử lý sự kiện cho button Delete
         deleteButton.setOnAction(event -> {
+            delete(fee);
         });
 
         // Đặt các button vào HBox
@@ -295,6 +296,17 @@ public class FeeController implements Initializable {
         serviceFee.setYear(year);
         serviceFee.setPaidStatus(false);
         serviceFeeRepository.save(serviceFee);
+    }
+
+    private void delete(Fee fee) {
+        if(Message.confirm("Xóa yêu cầu đóng phí này?") == false){
+            return;
+        }
+        serviceFeeRepository.deleteById(fee.getServiceFee().getId());
+        vehicleFeeRepository.deleteById(fee.getVehicleFee().getId());
+        utilityBillRepository.deleteById(fee.getUtilityBill().getId());
+        fees.removeIf(f -> f.getApartment().getId().equals(fee.getApartment().getId()));
+        table.setItems(fees);
     }
 
     public void createVehicleFee(Apartment a, Integer month, Integer year){

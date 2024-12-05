@@ -52,8 +52,8 @@ public class MailService {
         try {
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject(subject);
-            message.setContent(text, "text/html");
+            message.setSubject(subject, "UTF-8");
+            message.setContent(text, "text/html; charset=UTF-8");
             // Gửi email
             Transport.send(message);
         } catch (MessagingException e) {

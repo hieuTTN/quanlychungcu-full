@@ -1,0 +1,81 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head>
+        <head th:replace="common/libuser :: libheader"></head>
+        <link rel="stylesheet" type="text/css" href="../css/stylemain.css">
+    </head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div th:replace="common/navbar :: sidenav"></div>
+    <div id="page-content-wrapper" class="w-100">
+        <div th:replace="common/navbar :: topnav"></div>
+        <div class="container-fluid py-4" id='mainpageadmin'>
+            <h5>Danh sách phí dịch vụ nợ cần đóng</h5>
+            <hr>
+            <table class="table" id="example">
+                <thead>
+                <tr>
+                    <th>Tháng</th>
+                    <th>Tên phí</th>
+                    <th>Chi phí</th>
+                    <th>Trạng thái thanh toán</th>
+                    <th>Mô tả</th>
+                    <th>Thanh toán</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${vehicleFees}">
+                        <td th:text="${c.month} +' - '+${c.year}"></td>
+                        <td>Phí gửi xe</td>
+                        <td class="price" th:text="${c.fee}"></td>
+                        <td>Chưa thanh toán</td>
+                        <td>Xe ô tô: 2tr/tháng, xe máy 150k/ tháng</td>
+                        <td>
+                            <form method="post" action="/thanhtoan">
+                                <input type="hidden" name="loai" value="GUI_XE">
+                                <input type="hidden" name="id" th:value="${c.id}">
+                                <button class="btn btn-primary">thanh toán</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr th:each="c : ${serviceFees}">
+                        <td th:text="${c.month} +' - '+${c.year}"></td>
+                        <td>Phí dịch vụ căn hộ</td>
+                        <td class="price" th:text="${c.fee}"></td>
+                        <td>Chưa thanh toán</td>
+                        <td>13.000đ/ m2</td>
+                        <td>
+                            <form method="post" action="/thanhtoan">
+                                <input type="hidden" name="loai" value="DICH_VU">
+                                <input type="hidden" name="id" th:value="${c.id}">
+                                <button class="btn btn-primary">thanh toán</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr th:each="c : ${utilityBills}">
+                        <td th:text="${c.month} +' - '+${c.year}"></td>
+                        <td>Phí điện-nước</td>
+                        <td class="price" th:text="${c.fee}"></td>
+                        <td>Chưa thanh toán</td>
+                        <td><span th:text="'Số nước: '+${c.numWater}"></span><br>
+                            <span th:text="'Số điện: '+${c.numElectricity}"></span>
+                        </td>
+                        <td>
+                            <form method="post" action="/thanhtoan">
+                                <input type="hidden" name="loai" value="DIEN_NUOC">
+                                <input type="hidden" name="id" th:value="${c.id}">
+                                <button class="btn btn-primary">thanh toán</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('#example').DataTable();
+</script>
+</html>
