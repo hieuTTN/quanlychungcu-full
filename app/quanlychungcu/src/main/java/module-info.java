@@ -38,11 +38,13 @@ module com.app.JavaFXSpringApplication {
     exports com.app.controller.maintenance;
     exports com.app.controller.vehicle;
     exports com.app.controller.repair;
+    exports com.app.controller.fee;
     opens com.app.controller.apartment;
     opens com.app.controller.account;
     opens com.app.controller.resident;
     opens com.app.controller.maintenance;
     opens com.app.controller.vehicle;
     opens com.app.controller.repair;
+    opens com.app.controller.fee;
     opens com.app.service;
 }
