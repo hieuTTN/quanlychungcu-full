@@ -2,6 +2,7 @@ package com.app.controller.fee;
 
 import com.app.controller.FrameController;
 import com.app.controller.Message;
+import com.app.controller.maintenance.AddMaintenanceController;
 import com.app.entity.*;
 import com.app.repository.ApartmentRepository;
 import com.app.repository.ServiceFeeRepository;
@@ -15,7 +16,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -25,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -244,6 +248,7 @@ public class FeeController implements Initializable {
 
         // Xử lý sự kiện cho button Edit
         editButton.setOnAction(event -> {
+            openEdit(fee);
         });
 
         // Xử lý sự kiện cho button Delete
@@ -358,5 +363,21 @@ public class FeeController implements Initializable {
         Locale vietnamLocale = new Locale("vi", "VN"); // Định dạng theo Việt Nam
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(vietnamLocale);
         return currencyFormatter.format(amount);
+    }
+
+    public void openEdit(Fee fee){
+        try {
+            // Load child node khác
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/fee/updatefee.fxml"));
+            loader.setControllerFactory(applicationContext::getBean);  // Dùng Spring để tạo controller
+            Node node = loader.load();
+            UpdateFeeController childController = loader.getController();
+            childController.setFrameController(frameController);
+            childController.setFee(fee);
+            frameController.noidung.getChildren().clear();
+            frameController.noidung.getChildren().add(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

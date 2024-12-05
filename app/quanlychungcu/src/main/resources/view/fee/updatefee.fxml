@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.controller.fee.UpdateFeeController">
+    <children>
+        <Label fx:id="lb_infor" layoutX="22.0" layoutY="25.0" text="Cập nhật phí dịch vụ">
+            <font>
+                <Font size="35.0" />
+            </font>
+        </Label>
+        <HBox layoutX="22.0" layoutY="92.0" prefHeight="386.0" prefWidth="923.0">
+            <children>
+                <VBox prefHeight="386.0" prefWidth="321.0">
+                    <children>
+                        <Label text="Chỉ Số điện">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txt_chisodien" styleClass="inputadd">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Số điện">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txt_sodien" styleClass="inputadd">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Chỉ số nước">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                  <TextField fx:id="txt_chisonuoc" styleClass="inputadd">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                        <Label text="Số nước">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txt_sonuoc" styleClass="inputadd">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </VBox>
+                <VBox prefHeight="386.0" prefWidth="321.0">
+                    <children>
+                        <Label layoutX="15.0" layoutY="15.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </Label>
+                  <HBox prefHeight="61.0" prefWidth="310.0">
+                     <children>
+                        <VBox prefHeight="61.0" prefWidth="194.0">
+                           <children>
+                              <Label text="Chỉ số điện tháng trước">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Chỉ số nước tháng trước">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="lb_chisodienthangtruoc" text="0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="lb_chisonuocthangtruoc" text="0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                        <CheckBox fx:id="checkTienDien" mnemonicParsing="false" text="Đã thanh toán tiền điện - nước">
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </CheckBox>
+                  <CheckBox fx:id="checkPhiCanHo" layoutX="15.0" layoutY="40.0" mnemonicParsing="false" text="Đã thanh toán phí căn hộ">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="checkPhiGuiXe" layoutX="15.0" layoutY="149.0" mnemonicParsing="false" text="Đã thanh toán phí gửi xe">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                        <Button fx:id="btnadd" mnemonicParsing="false" onAction="#capNhatThongTin" prefHeight="43.0" prefWidth="311.0" styleClass="btn_add" text="Cập nhật">
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                    <HBox.margin>
+                        <Insets left="30.0" />
+                    </HBox.margin>
+                </VBox>
+                <VBox prefHeight="521.0" prefWidth="254.0">
+                    <children>
+                        <ImageView fx:id="anh" fitHeight="179.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true" />
+                    </children>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
