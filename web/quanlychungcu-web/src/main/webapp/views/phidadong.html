@@ -1,0 +1,55 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head>
+        <head th:replace="common/libuser :: libheader"></head>
+        <link rel="stylesheet" type="text/css" href="../css/stylemain.css">
+    </head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div th:replace="common/navbar :: sidenav"></div>
+    <div id="page-content-wrapper" class="w-100">
+        <div th:replace="common/navbar :: topnav"></div>
+        <div class="container-fluid py-4" id='mainpageadmin'>
+            <h5>Danh sách phí dịch vụ đã đóng</h5>
+            <hr>
+            <table class="table" id="example">
+                <thead>
+                <tr>
+                    <th>Tháng</th>
+                    <th>Tên phí</th>
+                    <th>Chi phí</th>
+                    <th>Mô tả</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="c : ${vehicleFees}">
+                    <td th:text="${c.month} +' - '+${c.year}"></td>
+                    <td>Phí gửi xe</td>
+                    <td class="price" th:text="${c.fee}"></td>
+                    <td>Xe ô tô: 2tr/tháng, xe máy 150k/ tháng</td>
+                </tr>
+                <tr th:each="c : ${serviceFees}">
+                    <td th:text="${c.month} +' - '+${c.year}"></td>
+                    <td>Phí dịch vụ căn hộ</td>
+                    <td class="price" th:text="${c.fee}"></td>
+                    <td>13.000đ/ m2</td>
+                </tr>
+                <tr th:each="c : ${utilityBills}">
+                    <td th:text="${c.month} +' - '+${c.year}"></td>
+                    <td>Phí điện-nước</td>
+                    <td class="price" th:text="${c.fee}"></td>
+                    <td><span th:text="'Số nước: '+${c.numWater}"></span><br>
+                        <span th:text="'Số điện: '+${c.numElectricity}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('#example').DataTable();
+</script>
+</html>

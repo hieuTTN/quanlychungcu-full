@@ -175,6 +175,7 @@ public class ApartmentController implements Initializable {
         });
 
         thanhVienButton.setOnAction(event -> {
+            chiTietApartment(apartment);
         });
 
         // Đặt các button vào HBox
@@ -184,6 +185,10 @@ public class ApartmentController implements Initializable {
 
     private void editApartment(Apartment apartment) {
         openAddCh(apartment.getId());
+    }
+
+    private void chiTietApartment(Apartment apartment) {
+        openChiTiet(apartment);
     }
 
     private void deleteApartment(Long id) {
@@ -223,6 +228,22 @@ public class ApartmentController implements Initializable {
             AddApartmentController childController = loader.getController();
             childController.setFrameController(frameController);
             childController.setId(id);
+            frameController.noidung.getChildren().clear();
+            frameController.noidung.getChildren().add(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openChiTiet(Apartment apartment){
+        try {
+            // Load child node khác
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/apartment/detail.fxml"));
+            loader.setControllerFactory(applicationContext::getBean);  // Dùng Spring để tạo controller
+            Node node = loader.load();
+            DetailController childController = loader.getController();
+            childController.setFrameController(frameController);
+            childController.setApartment(apartment);
             frameController.noidung.getChildren().clear();
             frameController.noidung.getChildren().add(node);
         } catch (IOException e) {

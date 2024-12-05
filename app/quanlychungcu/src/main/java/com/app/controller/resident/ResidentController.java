@@ -68,7 +68,7 @@ public class ResidentController implements Initializable {
     private TableColumn<Resident, String> col_email;
 
     @FXML
-    private TableColumn<Resident, Date> col_ngaysinh;
+    private TableColumn<Resident, String> col_ngaysinh;
 
     @FXML
     private TableColumn<Resident, String> col_sodienthoai;
