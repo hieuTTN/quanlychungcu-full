@@ -263,6 +263,8 @@ public class FeeController implements Initializable {
 
 
     public void khoiTao(){
+        listThang.clear();
+        listNam.clear();
         for(int i=1; i< 13; i++){
             listThang.add("Tháng "+i);
         }

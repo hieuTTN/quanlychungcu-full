@@ -36,4 +36,10 @@ public class LoginController {
         session.setAttribute("residentName", resident.get().getFullName());
         return "redirect:/thongtin";
     }
+
+    @GetMapping("/logout")
+    public String loginPost(HttpSession session){
+        session.removeAttribute("resident");
+        return "redirect:/login";
+    }
 }
