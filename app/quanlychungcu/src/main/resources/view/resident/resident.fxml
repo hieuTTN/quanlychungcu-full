@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -24,6 +25,16 @@
                </font>
             </Label>
             <Region prefHeight="76.0" prefWidth="2000.0" />
+            <ComboBox fx:id="cb_tang" minWidth="150.0" prefHeight="35.0" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </ComboBox>
+            <Button minWidth="70.0" mnemonicParsing="false" onAction="#locCuDan" styleClass="btn_add" text="Lọc">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
             <Button maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#openAddHoDan" prefWidth="40.0" styleClass="btnadd">
                <HBox.margin>
                   <Insets right="20.0" />

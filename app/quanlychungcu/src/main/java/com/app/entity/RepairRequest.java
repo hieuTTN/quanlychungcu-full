@@ -27,6 +27,10 @@ public class RepairRequest {
 
     private LocalDateTime requestDate;
 
+    private Boolean canceled;
+
+    private LocalDateTime cancelDate;
+
     @ManyToOne
     private Apartment apartment;
 

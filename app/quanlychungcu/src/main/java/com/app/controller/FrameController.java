@@ -19,12 +19,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -37,9 +40,6 @@ public class FrameController implements Initializable {
 
     @FXML
     private Button btnquanlyhodan;
-
-    @FXML
-    private Button btnqlphidichvu;
 
     @FXML
     private Button btntinhtrangbaotri;
@@ -58,9 +58,6 @@ public class FrameController implements Initializable {
 
     @FXML
     private ImageView logo;
-
-    @FXML
-    private ImageView avatar;
 
     @FXML
     public VBox noidung;
@@ -181,10 +178,25 @@ public class FrameController implements Initializable {
         node.prefHeightProperty().bind(noidung.heightProperty());
     }
 
+    @FXML
+    void logout(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/account/login.fxml"));
+            loader.setControllerFactory(applicationContext::getBean);
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/view/style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-        buttons = List.of(btndangkybaoduong, btndongphidichvu, btnphuongtien, btnqlcanho, btnqlphidichvu, btnquanlyhodan, btntinhtrangbaotri);
-		setAvatar();
+        buttons = List.of(btndangkybaoduong, btndongphidichvu, btnphuongtien, btnqlcanho, btnquanlyhodan, btntinhtrangbaotri);
 		setLogo();
 		AnimationTimer timer = new AnimationTimer() {
 		    @Override
@@ -196,7 +208,7 @@ public class FrameController implements Initializable {
 //        List<User> users = userRepository.findAll();
 //        System.out.println("size bash: "+users.size());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/apartment/apartment.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);  // Dùng Spring để tạo controller
+        loader.setControllerFactory(applicationContext::getBean);
         VBox node = null;
         try {
             node = loader.load();
@@ -217,11 +229,6 @@ public class FrameController implements Initializable {
         }
     }
 
-	public void setAvatar() {
-		InputStream ip = getClass().getResourceAsStream("/image/avatar.jpg");
-		Image image = new Image(ip);
-		avatar.setImage(image);
-	}
 
 	public void setLogo() {
 		InputStream ip = getClass().getResourceAsStream("/image/avatar.jpg");

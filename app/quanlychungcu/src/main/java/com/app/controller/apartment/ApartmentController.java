@@ -3,6 +3,7 @@ package com.app.controller.apartment;
 import com.app.controller.FrameController;
 import com.app.controller.Message;
 import com.app.entity.Apartment;
+import com.app.entity.Resident;
 import com.app.repository.ApartmentRepository;
 import com.app.repository.UserRepository;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -116,7 +117,20 @@ public class ApartmentController implements Initializable {
         });
         col_cudan.setCellValueFactory(cellData -> {
             Apartment apartment = cellData.getValue(); // Lấy đối tượng hiện tại
-            return new SimpleStringProperty(String.valueOf(apartment.getResidents().size()));
+            String tinhTrang = "Chưa có chủ căn hộ";
+            Integer numChuHo = 0;
+            for(Resident p : apartment.getResidents()){
+                if(p.getIsHouseholdHead() == true){
+                    ++numChuHo;
+                }
+            }
+            if(numChuHo > 0){
+                tinhTrang = "Có "+numChuHo+" chủ căn hộ";
+            }
+            if(apartment.getIsSold() == false){
+                tinhTrang = "";
+            }
+            return new SimpleStringProperty("Tổng: "+String.valueOf(apartment.getResidents().size())+", "+tinhTrang);
         });
         col_soxe.setCellValueFactory(cellData -> {
             Apartment apartment = cellData.getValue(); // Lấy đối tượng hiện tại

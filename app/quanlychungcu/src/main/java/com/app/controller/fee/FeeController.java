@@ -105,7 +105,7 @@ public class FeeController implements Initializable {
 
     @FXML
     void locDuLieu(ActionEvent event) {
-
+        initTable();
     }
 
     @FXML

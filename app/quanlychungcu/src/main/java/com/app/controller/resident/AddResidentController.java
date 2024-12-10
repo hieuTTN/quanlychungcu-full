@@ -116,6 +116,16 @@ public class AddResidentController implements Initializable {
             Resident resident = new Resident();
             if(id != null){
                 resident = residentRepository.findById(id).get();
+                if(residentRepository.findByUserNameAndId(txt_username.getText(), id) != null){
+                    Message.getMess("Tên đăng nhập đã được dùng cho tài khoản khác!", Alert.AlertType.WARNING);
+                    return;
+                }
+            }
+            else{
+                if(residentRepository.findByUserName(txt_username.getText()) != null){
+                    Message.getMess("Tên đăng nhập đã được dùng cho tài khoản khác!", Alert.AlertType.WARNING);
+                    return;
+                }
             }
             resident.setImage(linkAnh);
             resident.setBod(txt_ngaysinh.getValue());
@@ -168,6 +178,12 @@ public class AddResidentController implements Initializable {
         if(txt_hoten.getText().equals("") || txt_ngaysinh.getValue() == null){
             Message.getMess("Họ tên và ngày sinh không được bỏ trống!", Alert.AlertType.WARNING);
             return false;
+        }
+        if(checkChuHo.isSelected() == true){
+            if(txt_email.getText().equals("") || txt_username.getText().equals("") || !txt_matkhau.getText().equals("")){
+                Message.getMess("Chủ hộ phải có email và tên đăng nhập, mật khẩu!", Alert.AlertType.WARNING);
+                return false;
+            }
         }
         return true;
     }

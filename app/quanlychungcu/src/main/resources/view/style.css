@@ -246,3 +246,7 @@
     -fx-fill: #fff;
     -fx-cursor: hand;
 }
+
+.left-login{
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+}

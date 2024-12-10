@@ -76,6 +76,16 @@ public class AddApartmentController implements Initializable {
             Apartment apartment = new Apartment();
             if(id != null){
                 apartment = apartmentRepository.findById(id).get();
+                if(apartmentRepository.findByTenAndId(txt_name.getText(), id) != null){
+                    Message.getMess("Tên căn hộ đã tồn tại", Alert.AlertType.WARNING);
+                    return;
+                }
+            }
+            else{
+                if(apartmentRepository.findByTen(txt_name.getText()) != null){
+                    Message.getMess("Tên căn hộ đã tồn tại", Alert.AlertType.WARNING);
+                    return;
+                }
             }
             apartment.setName(txt_name.getText());
             apartment.setAcreage(Float.valueOf(txt_dientich.getText()));

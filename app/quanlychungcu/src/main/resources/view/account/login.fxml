@@ -8,53 +8,80 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="loginform" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.controller.account.LoginController">
+<GridPane fx:id="mainpaine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1127.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.controller.account.LoginController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="224.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="left-login">
          <children>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="158.0" text="Login" textFill="#991117">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-         <children>
-            <TextField fx:id="username" prefHeight="38.0" prefWidth="394.0" promptText="username">
-               <VBox.margin>
-                  <Insets left="60.0" right="60.0" top="10.0" />
-               </VBox.margin>
-            </TextField>
-            <PasswordField fx:id="password" prefHeight="38.0" prefWidth="394.0" promptText="password">
-               <VBox.margin>
-                  <Insets left="60.0" right="60.0" top="20.0" />
-               </VBox.margin>
-            </PasswordField>
-            <HBox alignment="TOP_CENTER" prefHeight="47.0" prefWidth="600.0">
+            <Region prefHeight="732.0" prefWidth="2000.0" />
+            <VBox alignment="CENTER" maxWidth="500.0" minWidth="500.0" prefHeight="2000.0" prefWidth="500.0">
                <children>
-                  <Button id="#btn_login" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="210.0" styleClass="btn_login" text="Login">
+                  <Label text="ĐĂNG NHẬP" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold" size="30.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets top="20.0" />
-                     </HBox.margin>
+                  </Label>
+                  <HBox prefHeight="133.0" prefWidth="500.0">
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox maxWidth="170.0" minWidth="170.0" prefHeight="200.0" prefWidth="170.0">
+                           <children>
+                              <Label text="Tên đăng nhập" textFill="#f8f8f8">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Mật khẩu" textFill="WHITE">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="386.0">
+                           <children>
+                              <TextField fx:id="username" prefHeight="32.0" />
+                              <PasswordField fx:id="password" prefHeight="32.0" promptText="*****">
+                                 <VBox.margin>
+                                    <Insets top="22.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="470.0" text="Đăng Nhập">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
                   </Button>
                </children>
-            </HBox>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </GridPane>

@@ -26,6 +26,7 @@
           <th>Chi phí</th>
           <th>Thanh toán</th>
           <th>Nội dung yêu cầu</th>
+          <th>Tình trạng</th>
           <th>Chức năng</th>
         </tr>
         </thead>
@@ -36,8 +37,9 @@
           <td class="price" th:text="${c.fee}"></td>
           <td th:text="${c.paid == true? 'Đã thanh toán':'Chưa thanh toán'}"></td>
           <td th:utext="${c.description}"></td>
+          <td th:text="${c.canceled == true?'Đã hủy ngày '+c.cancelDate:''}"></td>
           <td>
-            <a th:if="${c.fixed == false}" class="delete-btn" th:href="@{delete-sua-chua(id=${c.id})}" onclick="return confirm('Bạn có chắc chắn muốn xóa yêu cầu sửa chữa này?');"><i class="fa fa-trash iconaction" ></i></a>
+            <a th:if="${c.fixed == false && c.canceled == false}" class="delete-btn" th:href="@{delete-sua-chua(id=${c.id})}" onclick="return confirm('Bạn có chắc chắn muốn xóa yêu cầu sửa chữa này?');">Hủy</a>
             <a th:if="${c.fixed == false}" class="edit-btn" th:href="@{add-sua-chua(id=${c.id})}"><i class="fa fa-edit iconaction" ></i></a>
           </td>
         </tr>

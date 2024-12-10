@@ -51,6 +51,7 @@ public class SuaChuaController {
         repair.setRequestDate(LocalDateTime.now());
         repair.setApartment(resident.getApartment());
         repair.setPaid(false);
+        repair.setCanceled(false);
         repair.setFee(0D);
         if(repair.getId() != null){
             RepairRequest repairRequest = repairRequestRepository.findById(repair.getId()).get();
@@ -64,8 +65,11 @@ public class SuaChuaController {
 
     @GetMapping(value = {"/delete-sua-chua"})
     public String delete(@RequestParam Long id, RedirectAttributes redirectAttributes) {
-        repairRequestRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("message", "Xóa sửa chữa thành công!");
+        RepairRequest repairRequest = repairRequestRepository.findById(id).get();
+        repairRequest.setCanceled(true);
+        repairRequest.setCancelDate(LocalDateTime.now());
+        repairRequestRepository.save(repairRequest);
+        redirectAttributes.addFlashAttribute("message", "Hủy thành công!");
         return "redirect:/sua-chua";
     }
 }

@@ -47,17 +47,6 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnqlphidichvu" alignment="TOP_LEFT" layoutX="18.0" layoutY="109.0" mnemonicParsing="false" onMouseClicked="#openQlDichVu" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Phí dịch vụ">
-               <graphic>
-                  <FontAwesomeIconView glyphName="MONEY" size="15" />
-               </graphic>
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Button>
             <Button fx:id="btntinhtrangbaotri" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openBaoTri" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Tình trạng bảo trì">
                <graphic>
                   <FontAwesomeIconView glyphName="WRENCH" size="15" />
@@ -94,6 +83,17 @@
             <Button fx:id="btnphuongtien" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#openPhuongTien" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Phương tiện">
                <graphic>
                   <FontAwesomeIconView glyphName="CAR" size="15" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnphuongtien1" alignment="TOP_LEFT" layoutX="25.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Đăng xuất">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SIGN_OUT" size="15" />
                </graphic>
                <font>
                   <Font size="14.0" />
@@ -153,20 +153,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <HBox alignment="CENTER" maxWidth="200.0" minWidth="200.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <FontAwesomeIconView glyphName="GEAR" size="20">
-                     <HBox.margin>
-                        <Insets left="100.0" />
-                     </HBox.margin>
-                  </FontAwesomeIconView>
-                  <ImageView fx:id="avatar" fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER" maxWidth="200.0" minWidth="200.0" prefHeight="100.0" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

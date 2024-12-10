@@ -49,6 +49,12 @@ public class ResidentController implements Initializable {
     @Autowired
     private ResidentRepository residentRepository;
 
+    @Autowired
+    private ApartmentRepository apartmentRepository;
+
+    @FXML
+    private ComboBox<String> cb_tang;
+
     @FXML
     private Label lbquanlyhodan;
 
@@ -84,6 +90,8 @@ public class ResidentController implements Initializable {
 
     private ObservableList<Resident> residents = FXCollections.observableArrayList();
 
+    private ObservableList<String> tangs = FXCollections.observableArrayList();
+
     @FXML
     void openAddHoDan(ActionEvent event) {
         openAddCh(null);
@@ -92,12 +100,34 @@ public class ResidentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setDoRongCot();
-        initTable();
+        initTable(residentRepository.findAll());
+        setListTang();
     }
 
-    public void initTable() {
+    public void setListTang(){
+        List<Integer> is = apartmentRepository.getAllTang();
+        tangs.add("Tất cả tầng");
+        is.forEach(p->{
+            String t = "Tầng "+p;
+            tangs.add(t);
+        });
+        cb_tang.setItems(tangs);
+        cb_tang.setValue("Tất cả tầng");
+    }
+
+    @FXML
+    void locCuDan(ActionEvent event) {
+        if(cb_tang.getValue().equals("Tất cả tầng")){
+            initTable(residentRepository.findAll());
+            return;
+        }
+        Integer tang = Integer.valueOf(cb_tang.getValue().split(" ")[1]);
+        List<Resident> r = residentRepository.findByTang(tang);
+        initTable(r);
+    }
+
+    public void initTable(List<Resident> all) {
         residents.clear();
-        List<Resident> all = residentRepository.findAll();
         all.forEach(p->{
             p.setImageView();
             residents.add(p);

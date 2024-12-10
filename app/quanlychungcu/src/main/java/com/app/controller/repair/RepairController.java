@@ -114,7 +114,11 @@ public class RepairController implements Initializable {
         });
         col_trangthaisua.setCellValueFactory(cellData -> {
             RepairRequest repairRequest = cellData.getValue();
-            return new SimpleStringProperty(repairRequest.getFixed() == true?"Đã sửa":"Chưa sửa");
+            String trangThai = repairRequest.getFixed() == true?"Đã sửa":"Chưa sửa";
+            if(repairRequest.getCanceled() != null && repairRequest.getCanceled() == true){
+                trangThai = "Đã hủy yêu cầu";
+            }
+            return new SimpleStringProperty(trangThai);
         });
         col_thanhtoan.setCellValueFactory(cellData -> {
             RepairRequest repairRequest = cellData.getValue();
@@ -149,8 +153,13 @@ public class RepairController implements Initializable {
                             setGraphic(null); // Nếu dòng rỗng, không hiển thị gì
                         } else {
                             RepairRequest repairRequest = getTableView().getItems().get(getIndex()); // Lấy item hiện tại
-                            HBox hbox = createButtonBox(repairRequest); // Tạo HBox với button
-                            setGraphic(hbox); // Đặt HBox vào cột
+                            if(repairRequest.getCanceled() == null || (repairRequest.getCanceled() != null && repairRequest.getCanceled() == false)){
+                                HBox hbox = createButtonBox(repairRequest); // Tạo HBox với button
+                                setGraphic(hbox); // Đặt HBox vào cột
+                            }
+                            else{
+                                setGraphic(new HBox());
+                            }
                         }
                     }
                 };

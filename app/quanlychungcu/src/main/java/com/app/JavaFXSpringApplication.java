@@ -27,7 +27,7 @@ public class JavaFXSpringApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/frames.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/account/login.fxml"));
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/account/login.fxml"));
         loader.setControllerFactory(applicationContext::getBean);
         Parent root = loader.load();
