@@ -193,7 +193,7 @@ public class ApartmentController implements Initializable {
         });
 
         // Đặt các button vào HBox
-        HBox hbox = new HBox(10, editButton, deleteButton, thanhVienButton); // 10 là khoảng cách giữa các button
+        HBox hbox = new HBox(10, editButton, thanhVienButton); // 10 là khoảng cách giữa các button
         return hbox;
     }
 

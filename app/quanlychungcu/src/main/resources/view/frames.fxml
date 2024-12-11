@@ -91,6 +91,17 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="btnphiguixe" alignment="TOP_LEFT" layoutX="25.0" layoutY="445.0" mnemonicParsing="false" onMouseClicked="#openPhiGuiXe" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Phí gửi xe">
+               <graphic>
+                  <FontAwesomeIconView glyphName="MONEY" size="15" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
             <Button fx:id="btnphuongtien1" alignment="TOP_LEFT" layoutX="25.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="60.0" prefWidth="270.0" styleClass="btn_menu" text="Đăng xuất">
                <graphic>
                   <FontAwesomeIconView glyphName="SIGN_OUT" size="15" />

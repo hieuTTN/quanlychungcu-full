@@ -46,11 +46,74 @@ public class DongChiPhiController {
         List<VehicleFee> vehicleFees = vehicleFeeRepository.dichVuChuaDong(resident.getApartment().getId());
         List<ServiceFee> serviceFees = serviceFeeRepository.dichVuChuaDong(resident.getApartment().getId());
         List<UtilityBill> utilityBills = utilityBillRepository.dichVuChuaDong(resident.getApartment().getId());
-
+        Double fee = 0D;
+        for(VehicleFee v : vehicleFees){
+            fee += v.getFee();
+        }
+        for(ServiceFee v : serviceFees){
+            fee += v.getFee();
+        }
+        for(UtilityBill v : utilityBills){
+            fee += v.getFee();
+        }
         model.addAttribute("vehicleFees",vehicleFees);
         model.addAttribute("serviceFees",serviceFees);
         model.addAttribute("utilityBills",utilityBills);
+        model.addAttribute("tongPhi",fee);
         return "dongchiphi";
+    }
+
+    @PostMapping("/thanhtoanAll")
+    public String dongTatCa(HttpSession session){
+        Double fee = 0D;
+        Resident resident = (Resident) session.getAttribute("resident");
+        List<VehicleFee> vehicleFees = vehicleFeeRepository.dichVuChuaDong(resident.getApartment().getId());
+        List<ServiceFee> serviceFees = serviceFeeRepository.dichVuChuaDong(resident.getApartment().getId());
+        List<UtilityBill> utilityBills = utilityBillRepository.dichVuChuaDong(resident.getApartment().getId());
+        for(VehicleFee v : vehicleFees){
+            fee += v.getFee();
+        }
+        for(ServiceFee v : serviceFees){
+            fee += v.getFee();
+        }
+        for(UtilityBill v : utilityBills){
+            fee += v.getFee();
+        }
+        String maThanhToan = String.valueOf(System.currentTimeMillis());
+        session.setAttribute("maThanhToan", maThanhToan);
+        String url = vnPayService.createOrder(fee.intValue(), maThanhToan, "http://localhost:8080/checkthanhtoanAll");
+        return "redirect:"+url;
+    }
+
+    @GetMapping("/checkthanhtoanAll")
+    public String checkthanhtoanAll(HttpSession session, HttpServletRequest request){
+        int paymentStatus = vnPayService.orderReturn(request);
+        if(paymentStatus != 1){
+            return "redirect:/thongtin";
+        }
+        Double fee = 0D;
+        Resident resident = (Resident) session.getAttribute("resident");
+        List<VehicleFee> vehicleFees = vehicleFeeRepository.dichVuChuaDong(resident.getApartment().getId());
+        List<ServiceFee> serviceFees = serviceFeeRepository.dichVuChuaDong(resident.getApartment().getId());
+        List<UtilityBill> utilityBills = utilityBillRepository.dichVuChuaDong(resident.getApartment().getId());
+        for(VehicleFee v : vehicleFees){
+            v.setPaidStatus(true);
+            vehicleFeeRepository.save(v);
+            fee += v.getFee();
+        }
+        for(ServiceFee v : serviceFees){
+            v.setPaidStatus(true);
+            serviceFeeRepository.save(v);
+            fee += v.getFee();
+        }
+        for(UtilityBill v : utilityBills){
+            v.setPaidStatus(true);
+            utilityBillRepository.save(v);
+            fee += v.getFee();
+        }
+        String maThanhToan = (String) session.getAttribute("maThanhToan");
+        sendMail(resident.getApartment(), "Thanh toán phí còn lại", fee,resident.getFullName(),maThanhToan);
+        return "redirect:/thongtin";
     }
 
     @PostMapping("/thanhtoan")
@@ -78,6 +141,8 @@ public class DongChiPhiController {
         String url = vnPayService.createOrder(fee.intValue(), maThanhToan, "http://localhost:8080/checkthanhtoan");
         return "redirect:"+url;
     }
+
+
 
     @GetMapping("/checkthanhtoan")
     public String createUrl(HttpSession session, HttpServletRequest request){

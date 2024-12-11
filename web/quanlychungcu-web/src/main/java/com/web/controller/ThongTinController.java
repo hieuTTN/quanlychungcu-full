@@ -2,8 +2,10 @@ package com.web.controller;
 
 import com.web.entity.Resident;
 import com.web.entity.Vehicle;
+import com.web.entity.VehicleServiceFee;
 import com.web.repository.ResidentRepository;
 import com.web.repository.VehicleRepository;
+import com.web.repository.VehicleServiceFeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,10 @@ public class ThongTinController {
     @Autowired
     private VehicleRepository vehicleRepository;
 
+    @Autowired
+    private VehicleServiceFeeRepository vehicleServiceFeeRepository;
+
+
     @GetMapping(value = {"/thongtin"})
     public String loginView(HttpSession session, Model model){
         Resident resident = (Resident) session.getAttribute("resident");
@@ -34,16 +40,20 @@ public class ThongTinController {
         Integer xeOto = 0;
         Integer xeMay = 0;
         Integer xeDap = 0;
+        VehicleServiceFee phiOTo = vehicleServiceFeeRepository.findById(1L).get();
+        VehicleServiceFee phiXeMay = vehicleServiceFeeRepository.findById(2L).get();
+        VehicleServiceFee phiXeDap = vehicleServiceFeeRepository.findById(3L).get();
         for(Vehicle v : vehicleList){
             if(v.getVehicleType() == 2){
-                phiXe += 2000000;
+                phiXe += phiOTo.getFee().intValue();
                 ++ xeOto;
             }
             if(v.getVehicleType() == 1){
-                phiXe += 150000;
+                phiXe += phiXeMay.getFee().intValue();
                 ++ xeMay;
             }
             if(v.getVehicleType() == 0){
+                phiXe += phiXeDap.getFee().intValue();
                 ++ xeDap;
             }
         }

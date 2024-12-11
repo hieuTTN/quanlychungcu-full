@@ -75,7 +75,10 @@
             </table>
             <h4 style="margin-top: 50px">Thông tin phương tiện</h4>
             <a href="/dangkyphuongtien" class="btn btn-primary">Đăng ký thêm phương tiện</a>
-            <span class="luuythongtin">Lưu ý (Mỗi hộ dân chỉ được đăng ký 1 xe ô tô), Phí gửi ô tô: 2 triệu /tháng, phí gửi xe máy: 150k/tháng, xe đạp: miễn phí</span>
+            <span class="luuythongtin">Lưu ý (Mỗi hộ dân chỉ được đăng ký 1 xe ô tô),
+                Phí gửi ô tô: <span class="price" th:text="${phiOTo}"></span> /tháng,
+                phí gửi xe máy: <span class="price" th:text="${phiXeMay}"></span>/tháng,
+                xe đạp: <span class="price" th:text="${phiXeDap}"></span></span>
             <br><br>
             <table class="table" id="examples">
                 <thead>

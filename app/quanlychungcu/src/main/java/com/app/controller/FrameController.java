@@ -13,6 +13,7 @@ import com.app.controller.maintenance.MaintenanceController;
 import com.app.controller.repair.RepairController;
 import com.app.controller.resident.ResidentController;
 import com.app.controller.vehicle.VehicleController;
+import com.app.controller.vehicleservicefee.VehicleServiceFeeController;
 import com.app.repository.UserRepository;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
@@ -46,6 +47,9 @@ public class FrameController implements Initializable {
 
     @FXML
     private Button btndangkybaoduong;
+
+    @FXML
+    private Button btnphiguixe;
 
     @FXML
     private Button btndongphidichvu;
@@ -179,6 +183,22 @@ public class FrameController implements Initializable {
     }
 
     @FXML
+    void openPhiGuiXe(MouseEvent event) throws IOException {
+        setNullId();
+        Button buttonClicked = (Button) event.getSource();
+        buttonClicked.setId("activemenu");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/vehicleservicefee/vehicleservicefee.fxml"));
+        loader.setControllerFactory(applicationContext::getBean);  // Dùng Spring để tạo controller
+        VBox node = loader.load();
+        noidung.getChildren().clear();
+        noidung.getChildren().add(node);
+        VehicleServiceFeeController childController = loader.getController();
+        childController.setFrameController(this);
+        node.prefWidthProperty().bind(noidung.widthProperty());
+        node.prefHeightProperty().bind(noidung.heightProperty());
+    }
+
+    @FXML
     void logout(MouseEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/account/login.fxml"));
@@ -194,9 +214,10 @@ public class FrameController implements Initializable {
         }
     }
 
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-        buttons = List.of(btndangkybaoduong, btndongphidichvu, btnphuongtien, btnqlcanho, btnquanlyhodan, btntinhtrangbaotri);
+        buttons = List.of(btndangkybaoduong, btndongphidichvu, btnphuongtien, btnqlcanho, btnquanlyhodan, btntinhtrangbaotri,btnphiguixe);
 		setLogo();
 		AnimationTimer timer = new AnimationTimer() {
 		    @Override

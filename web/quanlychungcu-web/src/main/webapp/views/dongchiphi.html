@@ -11,7 +11,12 @@
     <div id="page-content-wrapper" class="w-100">
         <div th:replace="common/navbar :: topnav"></div>
         <div class="container-fluid py-4" id='mainpageadmin'>
-            <h5>Danh sách phí dịch vụ nợ cần đóng</h5>
+            <div class="divheaderphi">
+                <h5>Danh sách phí dịch vụ nợ cần đóng</h5>
+                <form action="thanhtoanAll" method="post" class="btndongtatca">
+                    <button th:if="${tongPhi > 0}" class="btn btn-danger">Đóng <span th:text="${tongPhi}" class="price"></span></button>
+                </form>
+            </div>
             <hr>
             <table class="table" id="example">
                 <thead>

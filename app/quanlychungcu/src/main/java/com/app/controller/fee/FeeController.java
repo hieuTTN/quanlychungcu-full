@@ -4,10 +4,7 @@ import com.app.controller.FrameController;
 import com.app.controller.Message;
 import com.app.controller.maintenance.AddMaintenanceController;
 import com.app.entity.*;
-import com.app.repository.ApartmentRepository;
-import com.app.repository.ServiceFeeRepository;
-import com.app.repository.UtilityBillRepository;
-import com.app.repository.VehicleFeeRepository;
+import com.app.repository.*;
 import com.app.service.MailService;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -55,6 +52,9 @@ public class FeeController implements Initializable {
 
     @Autowired
     private ServiceFeeRepository serviceFeeRepository;
+
+    @Autowired
+    private VehicleServiceFeeRepository vehicleServiceFeeRepository;
 
     @Autowired
     private UtilityBillRepository utilityBillRepository;
@@ -314,12 +314,18 @@ public class FeeController implements Initializable {
     public void createVehicleFee(Apartment a, Integer month, Integer year){
         VehicleFee vehicleFee = new VehicleFee();
         Double fee = 0D;
+        VehicleServiceFee phiOTo = vehicleServiceFeeRepository.findById(1L).get();
+        VehicleServiceFee phiXeMay = vehicleServiceFeeRepository.findById(2L).get();
+        VehicleServiceFee phiXeDap = vehicleServiceFeeRepository.findById(3L).get();
         for(Vehicle v : a.getVehicles()){
             if(v.getVehicleType() == 2){
-                fee += 2000000D;
+                fee += phiOTo.getFee();
             }
             if(v.getVehicleType() == 1){
-                fee += 150000D;
+                fee += phiXeMay.getFee();
+            }
+            if(v.getVehicleType() == 0){
+                fee += phiXeDap.getFee();
             }
         }
         vehicleFee.setFee(fee);
