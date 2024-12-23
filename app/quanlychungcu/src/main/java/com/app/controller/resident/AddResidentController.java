@@ -31,6 +31,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 @Component
 public class AddResidentController implements Initializable {
@@ -141,7 +142,7 @@ public class AddResidentController implements Initializable {
             resident.setApartment(cbChonCanHo.getValue());
             resident.setPhone(txt_sdt.getText());
             residentRepository.save(resident);
-            Message.getMess("Thêm căn hộ thành công", Alert.AlertType.INFORMATION);
+            Message.getMess("Thêm cư dân thành công", Alert.AlertType.INFORMATION);
             openCuDan();
         }
     }
@@ -179,15 +180,46 @@ public class AddResidentController implements Initializable {
             Message.getMess("Họ tên và ngày sinh không được bỏ trống!", Alert.AlertType.WARNING);
             return false;
         }
+        if(cbChonCanHo.getValue() == null){
+            Message.getMess("Hãy chọn căn hộ!", Alert.AlertType.WARNING);
+            return false;
+        }
+        if(linkAnh == null){
+            Message.getMess("Hãy chọn ảnh", Alert.AlertType.WARNING);
+            return false;
+        }
         if(checkChuHo.isSelected() == true){
-            if(txt_email.getText().equals("") || txt_username.getText().equals("") || !txt_matkhau.getText().equals("")){
+            if(txt_email.getText().equals("") || txt_username.getText().equals("") || txt_matkhau.getText().equals("")){
                 Message.getMess("Chủ hộ phải có email và tên đăng nhập, mật khẩu!", Alert.AlertType.WARNING);
+                return false;
+            }
+        }
+        if(!txt_cccd.getText().equals("")){
+            if(isValidSo(txt_cccd.getText()) == false){
+                Message.getMess("Căn cước công dân chỉ chứa ký tự từ 0-9!", Alert.AlertType.WARNING);
+                return false;
+            }
+            if(txt_cccd.getText().length() < 9 || txt_cccd.getText().length() > 12){
+                Message.getMess("Căn cước công dân chỉ có độ dài từ 9-12 ký tự", Alert.AlertType.WARNING);
+                return false;
+            }
+        }
+        if(!txt_sdt.getText().equals("")){
+            if(isValidSo(txt_sdt.getText()) == false){
+                Message.getMess("Số điện thoại chỉ chứa ký tự từ 0-9!", Alert.AlertType.WARNING);
+                return false;
+            }
+            if(txt_sdt.getText().length() < 10 || txt_sdt.getText().length() > 11){
+                Message.getMess("Số điện thoại chỉ có độ dài từ 10-11 ký tự", Alert.AlertType.WARNING);
                 return false;
             }
         }
         return true;
     }
-
+    public boolean isValidSo(String str) {
+        String regex = "^\\d+$";
+        return Pattern.matches(regex, str);
+    }
     void openCuDan() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/resident/resident.fxml"));

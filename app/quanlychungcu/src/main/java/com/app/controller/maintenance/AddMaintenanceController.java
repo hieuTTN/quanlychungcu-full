@@ -111,9 +111,17 @@ public class AddMaintenanceController implements Initializable {
             maintenanceRepository.save(maintenance);
             Message.getMess("Thêm thông báo thành công", Alert.AlertType.INFORMATION);
             List<Resident> residents = residentRepository.findAll();
-            residents.forEach(p->{
-                mailService.sendAsyncEmail(p.getEmail(), txt_title.getText(), txt_noidung.getHtmlText());
-            });
+            if(maintenance.getCompleted() == false){
+                residents.forEach(p->{
+                    mailService.sendAsyncEmail(p.getEmail(), txt_title.getText(), txt_noidung.getHtmlText());
+                });
+            }
+            else{
+                residents.forEach(p->{
+                    mailService.sendAsyncEmail(p.getEmail(), txt_title.getText() + " - Đã hoàn thành",
+                            "Xin lỗi về sự bất tiện này, chúng tôi đã hoàn thành bảo trì hệ thống");
+                });
+            }
             openList();
         }
     }
@@ -158,4 +166,6 @@ public class AddMaintenanceController implements Initializable {
         String regex = "^([01]?[0-9]|2[0-3]):([0-5][0-9])$";
         return time.matches(regex);
     }
+
+
 }

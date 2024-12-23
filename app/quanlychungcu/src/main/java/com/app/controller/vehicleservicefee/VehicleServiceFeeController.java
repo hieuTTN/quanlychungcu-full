@@ -90,8 +90,8 @@ public class VehicleServiceFeeController implements Initializable {
             initTable();
             Message.getMess("Cập nhật thành công", Alert.AlertType.CONFIRMATION);
             for(Resident r : residentRepository.findAll()){
-                mailService.sendAsyncEmail(r.getEmail(), "Thay đổi phí gửi xe", "Phí gửi xe "+vehicleServiceFee.getName()+
-                        " đã thay đổi từ "+giaCu+" sang giá mới là "+formatToVND(vehicleServiceFee.getFee()));
+                mailService.sendAsyncEmail(r.getEmail(), "Thay đổi phí gửi xe", "Thông báo, phí gửi xe "+vehicleServiceFee.getName()+
+                        " sẽ thay đổi từ "+giaCu+" thành "+formatToVND(vehicleServiceFee.getFee())+" từ tháng sau. Xin chân thành cảm ơn quý cư dân");
             }
         }
     }

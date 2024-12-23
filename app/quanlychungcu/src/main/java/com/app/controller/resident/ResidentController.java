@@ -145,6 +145,9 @@ public class ResidentController implements Initializable {
         col_sodienthoai.setCellValueFactory(new PropertyValueFactory<>("phone"));
         col_canho.setCellValueFactory(cellData -> {
             Resident resident = cellData.getValue(); // Lấy đối tượng hiện tại
+            if(resident.getApartment() == null){
+                return new SimpleStringProperty("Chưa chọn căn hộ");
+            }
             return new SimpleStringProperty(resident.getApartment().getName()+"/nTầng: "+resident.getApartment().getFloor());
         });
         col_chucnang.setCellFactory(new Callback<TableColumn<Resident, HBox>, TableCell<Resident, HBox>>() {

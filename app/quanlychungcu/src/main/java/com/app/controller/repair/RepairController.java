@@ -158,7 +158,8 @@ public class RepairController implements Initializable {
                                 setGraphic(hbox); // Đặt HBox vào cột
                             }
                             else{
-                                setGraphic(new HBox());
+                                HBox hbox = createButtonBoxDL(repairRequest);
+                                setGraphic(hbox);
                             }
                         }
                     }
@@ -181,19 +182,31 @@ public class RepairController implements Initializable {
         iconView.setSize("12px");
         iconViewtrash.setFill(Color.WHITE);
         deleteButton.setGraphic(iconViewtrash);
-
-        // Xử lý sự kiện cho button Edit
         editButton.setOnAction(event -> {
             edit(repairRequest); // Gọi hàm chỉnh sửa, truyền apartment vào
         });
 
-        // Xử lý sự kiện cho button Delete
         deleteButton.setOnAction(event -> {
             delete(repairRequest.getId()); // Gọi hàm xóa, truyền ID vào
         });
-
-        // Đặt các button vào HBox
         HBox hbox = new HBox(10, editButton, deleteButton); // 10 là khoảng cách giữa các button
+        return hbox;
+    }
+
+
+    private HBox createButtonBoxDL(RepairRequest repairRequest) {
+        // Tạo các button
+        Button deleteButton = new Button("Xóa");
+        deleteButton.getStyleClass().add("deletebtn");
+        FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.EDIT);
+        FontAwesomeIconView iconViewtrash = new FontAwesomeIconView(FontAwesomeIcon.REMOVE);
+        iconView.setSize("12px");
+        iconViewtrash.setFill(Color.WHITE);
+        deleteButton.setGraphic(iconViewtrash);
+        deleteButton.setOnAction(event -> {
+            delete(repairRequest.getId()); // Gọi hàm xóa, truyền ID vào
+        });
+        HBox hbox = new HBox(deleteButton); // 10 là khoảng cách giữa các button
         return hbox;
     }
 

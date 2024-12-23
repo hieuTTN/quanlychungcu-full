@@ -46,15 +46,21 @@ public class Resident {
     private ImageView imageView;
 
     public void setImageView() {
+        if(image == null){
+            return;
+        }
         Image image = new Image(getImage());
         imageView = new ImageView(image);
     }
+
     public ImageView getImageView() {
-        imageView.setPreserveRatio(false);
-        imageView.setFitHeight(70);
-        imageView.setFitWidth(70);
-        imageView.setSmooth(true);
-        imageView.setCache(true);
+        if(imageView != null){
+            imageView.setPreserveRatio(false);
+            imageView.setFitHeight(70);
+            imageView.setFitWidth(70);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+        }
         return imageView;
     }
 }
